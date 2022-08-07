@@ -10,7 +10,7 @@ class Feedback extends Component {
     bad: 0,
   };
 
-  handleGood = () => {
+  countGood = () => {
     this.setState(
       (this.prevState = {
         good: this.state.good + 1,
@@ -18,7 +18,7 @@ class Feedback extends Component {
     );
   };
 
-  handleNeutral = () => {
+  countNeutral = () => {
     this.setState(
       (this.prevState = {
         neutral: this.state.neutral + 1,
@@ -26,7 +26,7 @@ class Feedback extends Component {
     );
   };
 
-  handleBad = () => {
+  countBad = () => {
     this.setState(
       (this.prevState = {
         bad: this.state.bad + 1,
@@ -34,18 +34,26 @@ class Feedback extends Component {
     );
   };
 
+  countTotal = () => {
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
+  countPositivePercentage = () => {
+    return (this.state.good * 100) / this.countTotal();
+  };
+
   render() {
     return (
       <div>
         <div>
           <h1>Please leave feedback</h1>
-          <button type="button" onClick={this.handleGood}>
+          <button type="button" onClick={this.countGood}>
             Good
           </button>
-          <button type="button" onClick={this.handleNeutral}>
+          <button type="button" onClick={this.countNeutral}>
             Neutral
           </button>
-          <button type="button" onClick={this.handleBad}>
+          <button type="button" onClick={this.countBad}>
             Bad
           </button>
         </div>
@@ -55,6 +63,8 @@ class Feedback extends Component {
           <p>Good: {this.state.good}</p>
           <p>Neutral: {this.state.neutral}</p>
           <p>Bad: {this.state.bad}</p>
+          <p>Total: {this.countTotal()}</p>
+          <p>Positive feedback: {this.countPositivePercentage()} %</p>
         </div>
       </div>
     );
