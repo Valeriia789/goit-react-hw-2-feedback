@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import Statistics from 'components/Statistics/Statistics';
+import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
 class Feedback extends Component {
   static defaultProps = {};
   static propTypes = {};
@@ -45,7 +46,8 @@ class Feedback extends Component {
   render() {
     return (
       <div>
-        <div>
+        <FeedbackOptions options={this.state} />
+        {/* <div>
           <h1>Please leave feedback</h1>
           <button type="button" onClick={this.countGood}>
             Good
@@ -56,8 +58,9 @@ class Feedback extends Component {
           <button type="button" onClick={this.countBad}>
             Bad
           </button>
-        </div>
+        </div> */}
 
+        {/* <Statistics /> */}
         <div>
           <h2>Statistics</h2>
           <p>Good: {this.state.good}</p>
