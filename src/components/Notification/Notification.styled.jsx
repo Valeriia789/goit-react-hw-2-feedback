@@ -7,7 +7,6 @@ export const Container = styled.div`
   min-width: 400px;
   max-width: 80%;
   margin-top: 30px;
-
   animation: popFromBottom 0.5s ease-in-out;
 
   @keyframes popFromBottom {
@@ -28,8 +27,8 @@ export const ImageContainer = styled.div`
   border-radius: 50%;
   overflow: hidden;
   position: absolute;
-  left: -18vmin;
-  top: -1.5vmin;
+  left: -20vmin;
+  top: -3vmin;
   border: 1vmin solid #fff;
 `;
 
