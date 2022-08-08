@@ -1,6 +1,7 @@
 @import-normalize; /* bring in normalize.css styles */
 
 body {
+  position: fixed;
   margin: 0px;
   text-align: center;
   font-family: 'Lato';
