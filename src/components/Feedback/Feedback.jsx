@@ -5,70 +5,60 @@ class Feedback extends Component {
   static defaultProps = {};
   static propTypes = {};
 
-  state = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
+  // Стан оголошується в конструкторі, оскільки це перше, що відбувається,
+  //  коли створюється екземпляр класу.
+  constructor(props) {
+    super(props);
 
-  countGood = () => {
-    this.setState(
-      (this.prevState = {
-        good: this.state.good + 1,
-      })
-    );
-  };
+    this.state = {
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    };
+  }
 
-  countNeutral = () => {
-    this.setState(
-      (this.prevState = {
-        neutral: this.state.neutral + 1,
-      })
-    );
-  };
+  onLeaveFeedback = event => {
+    const feedbackOption = event.target.name;
+    // console.log(event.target.name);
 
-  countBad = () => {
-    this.setState(
-      (this.prevState = {
-        bad: this.state.bad + 1,
-      })
-    );
+    this.setState(prevState => ({
+      [feedbackOption]: prevState[feedbackOption] + 1,
+    }));
   };
 
   countTotal = () => {
-    return this.state.good + this.state.neutral + this.state.bad;
+    return Object.values(this.state).reduce((previousValue, newFeedback) => {
+      return previousValue + newFeedback;
+    }, 0);
+    // return this.state.good + this.state.neutral + this.state.bad;
   };
 
   countPositivePercentage = () => {
-    return (this.state.good * 100) / this.countTotal();
+    const total = (this.state.good * 100) / this.countTotal();
+    return Math.round(total) >= 0 ? Math.round(total) : 0;
   };
 
   render() {
+    const options = Object.keys(this.state);
+    // console.log(Object.keys(this.state));
+    // const feedbacks = Object.values(this.state);
+    // console.log(Object.values(this.state));
+
     return (
       <div>
-        <FeedbackOptions options={this.state} />
-        {/* <div>
-          <h1>Please leave feedback</h1>
-          <button type="button" onClick={this.countGood}>
-            Good
-          </button>
-          <button type="button" onClick={this.countNeutral}>
-            Neutral
-          </button>
-          <button type="button" onClick={this.countBad}>
-            Bad
-          </button>
-        </div> */}
+        <h1>Please leave feedback</h1>
+        <FeedbackOptions
+          options={options}
+          onLeaveFeedback={this.onLeaveFeedback}
+        />
 
-        {/* <Statistics /> */}
-        <div>
-          <h2>Statistics</h2>
-          <p>Good: {this.state.good}</p>
-          <p>Neutral: {this.state.neutral}</p>
-          <p>Bad: {this.state.bad}</p>
-          <p>Total: {this.countTotal()}</p>
-          <p>Positive feedback: {this.countPositivePercentage()} %</p>
-        </div>
+        <Statistics
+          good={this.state.good}
+          neutral={this.state.neutral}
+          bad={this.state.bad}
+          total={this.countTotal()}
+          positivePercentage={this.countPositivePercentage()}
+        />
       </div>
     );
   }

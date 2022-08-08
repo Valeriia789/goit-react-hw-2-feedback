@@ -1,13 +1,18 @@
-import React, { Component } from 'react';
-
-const FeedbackOptions = () => {
-  const options = ['Good', 'Neutral', 'Bad'];
+const FeedbackOptions = ({ options, onLeaveFeedback }) => {
+  // console.log(options);
 
   return (
     <div>
-      {options.map(option => {
-        <button key={option}></button>
-      })}
+      {options.map(option => (
+        <button
+          key={option}
+          type="button"
+          name={option}
+          onClick={onLeaveFeedback}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
 };
