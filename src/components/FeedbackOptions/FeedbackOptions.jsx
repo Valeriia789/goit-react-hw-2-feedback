@@ -2,7 +2,7 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   // console.log(options);
 
   return (
-    <div>
+    <>
       {options.map(option => (
         <button
           key={option}
@@ -10,10 +10,10 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
           name={option}
           onClick={onLeaveFeedback}
         >
-          {option}
+          {option.toUpperCase()}
         </button>
       ))}
-    </div>
+    </>
   );
 };
 
