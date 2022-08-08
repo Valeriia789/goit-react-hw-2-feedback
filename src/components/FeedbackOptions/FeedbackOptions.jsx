@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {Button} from './FeedbackOptions.styled'
 
 const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   // console.log(options);
@@ -6,14 +7,14 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <>
       {options.map(option => (
-        <button
+        <Button
           key={option}
           type="button"
           name={option}
           onClick={onLeaveFeedback}
         >
           {option.toUpperCase()}
-        </button>
+        </Button>
       ))}
     </>
   );
