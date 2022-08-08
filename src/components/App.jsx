@@ -57,7 +57,7 @@ class App extends Component {
         </Section>
 
         {this.countTotal() === 0 ? (
-          <Notification message="There is no feedback yet" />
+          <Notification message="There is no feedback yet :( " />
         ) : (
           <Section title="Statistics">
             <Statistics
