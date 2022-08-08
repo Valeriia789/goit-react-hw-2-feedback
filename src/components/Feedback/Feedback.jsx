@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Statistics from 'components/Statistics/Statistics';
 import FeedbackOptions from 'components/FeedbackOptions/FeedbackOptions';
+import Statistics from 'components/Statistics/Statistics';
+import Section from 'components/Section/Section';
 class Feedback extends Component {
   static defaultProps = {};
   static propTypes = {};
@@ -46,19 +47,22 @@ class Feedback extends Component {
 
     return (
       <div>
-        <h1>Please leave feedback</h1>
-        <FeedbackOptions
-          options={options}
-          onLeaveFeedback={this.onLeaveFeedback}
-        />
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={options}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
+        </Section>
 
-        <Statistics
-          good={this.state.good}
-          neutral={this.state.neutral}
-          bad={this.state.bad}
-          total={this.countTotal()}
-          positivePercentage={this.countPositivePercentage()}
-        />
+        <Section title="Statistics">
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotal()}
+            positivePercentage={this.countPositivePercentage()}
+          />
+        </Section>
       </div>
     );
   }
