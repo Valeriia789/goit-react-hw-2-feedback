@@ -5,9 +5,6 @@ import Section from './Section/Section';
 import Notification from './Notification/Notification';
 
 class App extends Component {
-  static defaultProps = {};
-  static propTypes = {};
-
   // Стан оголошується в конструкторі, оскільки це перше, що відбувається,
   //  коли створюється екземпляр класу.
   constructor(props) {
