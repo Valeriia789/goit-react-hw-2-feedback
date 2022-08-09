@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import {
+  Position,
   Container,
   ImageContainer,
   Image,
@@ -10,6 +11,7 @@ import {
 const Notification = ({ message }) => {
   return (
     <>
+      <Position></Position>
       <Container>
         <ImageContainer>
           <Image

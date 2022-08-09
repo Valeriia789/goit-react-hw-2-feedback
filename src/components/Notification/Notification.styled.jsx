@@ -1,5 +1,13 @@
 import styled from '@emotion/styled';
 
+export const Position = styled.div`
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+`;
+
 export const Container = styled.div`
   position: relative;
   display: inline-block;
