@@ -5,8 +5,6 @@ import Section from './Section/Section';
 import Notification from './Notification/Notification';
 
 class App extends Component {
-  // Стан оголошується в конструкторі, оскільки це перше, що відбувається,
-  //  коли створюється екземпляр класу.
   constructor(props) {
     super(props);
 
@@ -19,7 +17,6 @@ class App extends Component {
 
   onLeaveFeedback = event => {
     const feedbackOption = event.target.name;
-    // console.log(event.target.name);
 
     this.setState(prevState => ({
       [feedbackOption]: prevState[feedbackOption] + 1,
@@ -40,9 +37,6 @@ class App extends Component {
 
   render() {
     const options = Object.keys(this.state);
-    // console.log(Object.keys(this.state));
-    // const feedbacks = Object.values(this.state);
-    // console.log(Object.values(this.state));
 
     return (
       <div>
@@ -72,19 +66,3 @@ class App extends Component {
 }
 
 export default App;
-
-// export const App = () => {
-//   return (
-//     <div
-//       style={{
-//         height: '100vh',
-//         display: 'flex',
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         fontSize: 40,
-//         color: '#010101'
-//       }}
-//     >
-//     </div>
-//   );
-// };
