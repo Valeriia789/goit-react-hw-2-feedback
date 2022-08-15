@@ -15,12 +15,29 @@ class App extends Component {
     };
   }
 
-  onLeaveFeedback = event => {
-    const feedbackOption = event.target.name;
+  // onLeaveFeedback = event => {
+  //   const feedbackOption = event.target.name;
+  //   this.setState(prevState => ({
+  //     [feedbackOption]: prevState[feedbackOption] + 1,
+  //   }));
+  // };
 
-    this.setState(prevState => ({
-      [feedbackOption]: prevState[feedbackOption] + 1,
-    }));
+  // в onLeaveFeedback повинен приходити зразу відгук,
+  // а не івент (так як при видаленні контакту ти id передаєш в телефонній книзі)
+
+  onLeaveFeedback = feedback => {
+    const feedbackOptions = Object.keys(this.state);
+    const optionValues = Object.values(this.state);
+
+    console.log(feedbackOptions);
+    console.log(optionValues);
+    console.log(feedback.target.name);
+
+    this.setState(prevState => {
+      return {
+        [feedback.target.name]: prevState[feedback.target.name] + 1,
+      };
+    });
   };
 
   countTotal = () => {
